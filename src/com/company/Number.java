@@ -2,7 +2,7 @@ package com.company;
 
 public class Number extends Thread {
 
-    private long threadNumber = -1;
+    private long threadNumber  ;
 
     public long getThreadNumber() {
         return threadNumber;
@@ -10,13 +10,18 @@ public class Number extends Thread {
 
     @Override
     public void run() {
-        threadNumber = genratorNumber();
 
+        try {
+            threadNumber = genratorNumber();
+            wait(30);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
     }
 
     private long genratorNumber(){
-        return (long)(Math.random()*4000000);
+        return (long)(Math.random()*2);
     }
 
 }
